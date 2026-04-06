@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury PinBall Co-op - Join Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-image: url('/mnt/user-data/uploads/1773276300022_image.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            padding: 140px 0;
+            text-align: center;
+            box-shadow:
+                inset 0 0 200px rgba(0, 0, 0, 0.5),
+                0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 10px solid #1a1a1a;
+            border-radius: 0 0 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glass overlay for depth */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 20%,
+                transparent 80%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Animated glass glare */
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                135deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.25) 50%,
+                transparent 60%
+            );
+            animation: glassShine 10s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glassShine {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(50%, 50%) rotate(0deg);
+            }
+        }
+
+        header h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            text-shadow:
+                3px 3px 0px #000,
+                6px 6px 0px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 255, 255, 0.8),
+                0 0 60px rgba(255, 215, 0, 0.6);
+            color: #000;
+            font-weight: 900;
+            letter-spacing: 5px;
+            position: relative;
+            z-index: 10;
+            text-transform: uppercase;
+            -webkit-text-stroke: 2px #fff;
+            paint-order: stroke fill;
+        }
+
+        .luxury-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            border: 3px solid #000;
+            box-shadow:
+                0 0 30px rgba(0, 0, 0, 0.8),
+                0 8px 20px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 10;
+            color: #000;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.6em;
+            color: #000;
+            text-shadow:
+                2px 2px 0px #fff,
+                4px 4px 0px rgba(255, 255, 255, 0.7),
+                -1px -1px 0px #fff,
+                1px 1px 15px rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 10;
+            font-weight: 700;
+            letter-spacing: 2px;
+            -webkit-text-stroke: 1px #fff;
+        }
+
+        .hero {
+            background: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            color: #0f3460;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-shadow: none;
+            -webkit-text-stroke: 0;
+        }
+
+        .membership-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #0f3460;
+            margin-bottom: 50px;
+        }
+
+        .membership-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border-top: 5px solid #e94560;
+        }
+
+        .price {
+            font-size: 3em;
+            color: #e94560;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 0.4em;
+            color: #666;
+        }
+
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1em;
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: #e94560;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .rotation-info {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .rotation-info h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .era-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .era-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #0f3460;
+            text-align: center;
+        }
+
+        .era-card h4 {
+            color: #e94560;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .services-section {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card h3 {
+            color: #0f3460;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .service-price {
+            font-size: 1.8em;
+            color: #e94560;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .rental-section {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .rental-section .section-title {
+            color: white;
+        }
+
+        .rental-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .rental-card h3 {
+            color: #e94560;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #d63651;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .hero h2 {
+                font-size: 2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .price {
+                font-size: 2.5em;
+            }
+
+            header {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="luxury-badge">PREMIUM EXPERIENCE</div>
+            <h1>Luxury PinBall Co-op</h1>
+            <p>Experience Premium Pinball Machines Every 3 Months</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Join the Ultimate Luxury Pinball Community</h2>
+            <p>Serving Eastern Ontario &amp; Western Quebec - From Greater Montreal to Ottawa/Gatineau, South to Kingston and everywhere in between</p>
+        </div>
+    </section>
+
+    <section class="membership-section">
+        <div class="container">
+            <h2 class="section-title">Co-op Membership</h2>
+
+            <div class="membership-card">
+                <h3 style="text-align: center; font-size: 2em; color: #0f3460;">How It Works</h3>
+                <div class="price">$300 <span>CAD / Every 3 Months</span></div>
+
+                <ul class="features">
+                    <li>Professional machine rotation every 3 months</li>
+                    <li>Your machine is exchanged with another member's machine</li>
+                    <li>Get your own machine back for 3 months every 9 months</li>
+                    <li>Professional delivery, setup, and removal included</li>
+                    <li>Deep cleaning and waxing service with each rotation</li>
+                    <li>Photo documentation sent to you showing your machine's condition</li>
+                    <li>Full insurance coverage during transport</li>
+                    <li>Access to professional maintenance and repair services</li>
+                </ul>
+
+                <div class="rotation-info">
+                    <h3>🔄 Machine Rotation Groups</h3>
+                    <p>Machines are rotated within their era group.</p>
+
+                    <div class="era-groups">
+                        <div class="era-card">
+                            <h4>Modern Era</h4>
+                            <p><strong>2000 - Present</strong></p>
+                            <p>Latest technology and themes</p>
+                        </div>
+                        <div class="era-card">
+                            <h4>Golden Era</h4>
+                            <p><strong>1980 - 1999</strong></p>
+                            <p>Classic solid-state machines</p>
+                        </div>
+                        <div class="era-card">
+                            <h4>Vintage Era</h4>
+                            <p><strong>Pre-1979</strong></p>
+                            <p>Electromechanical treasures</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#contact" class="cta-button">Join the Co-op Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rental-section">
+        <div class="container">
+            <h2 class="section-title">Machine Rental Service</h2>
+
+            <div class="rental-card">
+                <h3>Don't Own a Machine? No Problem!</h3>
+                <div class="price" style="color: #e94560;">$400 <span style="color: #f1f1f1;">CAD / Month</span></div>
+
+                <ul class="features" style="color: white;">
+                    <li>Rent a professionally maintained pinball machine</li>
+                    <li>Setup fees included - no hidden costs</li>
+                    <li>Perfect for homes and businesses</li>
+                    <li>Company-owned machines (not co-op member machines)</li>
+                    <li>Ideal for office lounges and employee engagement</li>
+                    <li>Flexible rental terms available</li>
+                    <li>Full insurance and maintenance included</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#contact" class="cta-button">Rent a Machine</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Additional Services</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🔧 Maintenance &amp; Repairs</h3>
+                    <p>Expert pinball machine repair and maintenance services</p>
+                    <div class="service-price">$85/hour</div>
+                    <p style="color: #666; margin-top: 10px;">Plus parts (marked up 25%)</p>
+                    <ul style="margin-top: 15px; list-style: none; color: #666;">
+                        <li>• 1-hour minimum</li>
+                        <li>• Experienced technicians</li>
+                        <li>• All eras of machines</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>🚨 Emergency Service</h3>
+                    <p>Priority repair service within 48 hours</p>
+                    <div class="service-price">$150 + hourly</div>
+                    <p style="color: #666; margin-top: 10px;">Callout fee plus standard hourly rate</p>
+                    <ul style="margin-top: 15px; list-style: none; color: #666;">
+                        <li>• Fast response time</li>
+                        <li>• Available for members and non-members</li>
+                        <li>• Get your machine working again quickly</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>✨ Deep Cleaning &amp; Waxing</h3>
+                    <p>Professional detailing service for your machine</p>
+                    <div class="service-price">$100</div>
+                    <p style="color: #666; margin-top: 10px;">Standalone service (included with rotations)</p>
+                    <ul style="margin-top: 15px; list-style: none; color: #666;">
+                        <li>• Playfield cleaning and waxing</li>
+                        <li>• Cabinet polishing</li>
+                        <li>• Restore that showroom shine</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>🚚 Delivery &amp; Pickup</h3>
+                    <p>Professional transportation service</p>
+                    <div class="service-price">$125/trip</div>
+                    <p style="color: #666; margin-top: 10px;">Outside of rotation schedule</p>
+                    <ul style="margin-top: 15px; list-style: none; color: #666;">
+                        <li>• Motorized stair-climbing equipment</li>
+                        <li>• Fully insured transport</li>
+                        <li>• Professional setup and removal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Join?</h2>
+            <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto 30px; color: #666;">
+                Whether you're looking to join our co-op, rent a machine, or need maintenance services, we're here to help.
+                Contact us today to get started!
+            </p>
+
+            <div style="margin: 40px 0;">
+                <p style="font-size: 1.3em; margin: 10px 0;"><strong>📧 Email:</strong> <a href="mailto:info@luxurypinball.ca">info@luxurypinball.ca</a></p>
+<p style="font-size: 1.3em; margin: 10px 0;"><strong>📍 Service Area:</strong> Eastern Townships, Montreal, Ottawa/Gatineau, Kingston &amp; Surrounding Areas</p>
+            </div>
+
+            <a href="mailto:info@luxurypinball.ca" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Luxury PinBall Co-op. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
